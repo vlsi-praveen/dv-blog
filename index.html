@@ -217,7 +217,7 @@
 </div>
 
 <div class="view-counter">
-    <span id="visit-count">0</span>
+    <span id="visit-count">1000</span>
 </div>
 
 <div class="container">
@@ -892,11 +892,12 @@ endmodule</pre>
     // Counter using CountAPI - increments on every page load
     const namespace = 'praveenkumarvagala-vlsi';
     const key = 'blog-views';
+    const startOffset = 1000;  // Starting count value
     
     fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('visit-count').textContent = data.value;
+            document.getElementById('visit-count').textContent = data.value + startOffset;
         })
         .catch(error => {
             document.getElementById('visit-count').textContent = '---';
