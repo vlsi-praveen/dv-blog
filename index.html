@@ -36,6 +36,21 @@
             font-size: 0.95em;
             opacity: 0.8;
         }
+        .view-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1a1a2e;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        .view-counter span {
+            font-weight: bold;
+            color: #4fc3f7;
+        }
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -199,6 +214,10 @@
     <h1>Must-Know Core RTL Projects for VLSI Engineers</h1>
     <p class="subtitle">Master Digital Design with Complete Verilog Implementations</p>
     <p class="meta"><strong>Praveen Kumar Vagala</strong> | 15 min read</p>
+</div>
+
+<div class="view-counter">
+    <span id="visit-count">0</span>
 </div>
 
 <div class="container">
@@ -868,6 +887,21 @@ endmodule</pre>
 <footer>
     <p>Code examples are for educational purposes. Verify functionality before production use.</p>
 </footer>
+
+<script>
+    // Counter using CountAPI - increments on every page load
+    const namespace = 'praveenkumarvagala-vlsi';
+    const key = 'blog-views';
+    
+    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('visit-count').textContent = data.value;
+        })
+        .catch(error => {
+            document.getElementById('visit-count').textContent = '---';
+        });
+</script>
 
 </body>
 </html>
