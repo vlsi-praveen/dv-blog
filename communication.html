@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication & Peripherals Projects for VLSI Engineers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f8f9fa;
+        }
+        .nav-bar {
+            background: #0f3460;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.95em;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+        .nav-bar a.active {
+            font-weight: bold;
+            border-bottom: 2px solid #4fc3f7;
+        }
+        .header-banner {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .header-banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .header-banner .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .header-banner .meta {
+            margin-top: 20px;
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+        .view-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1a1a2e;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        .view-counter span {
+            font-weight: bold;
+            color: #4fc3f7;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1a1a2e;
+            font-size: 1.8em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #0f3460;
+        }
+        h3 {
+            color: #16213e;
+            font-size: 1.4em;
+            margin: 30px 0 15px 0;
+        }
+        h4 {
+            color: #333;
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #0f3460;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .toc {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: #0f3460;
+        }
+        .toc ol {
+            margin-left: 25px;
+        }
+        .toc li {
+            margin: 8px 0;
+        }
+        .toc a {
+            color: #0f3460;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .project-card {
+            background: linear-gradient(to right, #f8f9fa, #e8f4f8);
+            border-left: 4px solid #0f3460;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #0f3460;
+        }
+        .interview-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .interview-box h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .tags {
+            margin-top: 30px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e8f4f8;
+            color: #0f3460;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.85em;
+        }
+        .diagram {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85em;
+            overflow-x: auto;
+            white-space: pre;
+            margin: 20px 0;
+        }
+        .blog-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .blog-nav a {
+            color: #0f3460;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .blog-nav a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 40px 0;
+        }
+        .summary-table {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-bar">
+    <a href="index.html">01: Core RTL</a>
+    <a href="memory-fifo.html">02: Memory & FIFO</a>
+    <a href="communication.html" class="active">03: Communication</a>
+</div>
+
+<div class="header-banner">
+    <h1>Communication & Peripherals Projects for VLSI Engineers</h1>
+    <p class="subtitle">Master UART, SPI, I2C & PWM with Complete Verilog Implementations</p>
+    <p class="meta"><strong>Praveen Kumar Vagala</strong> | 14 min read</p>
+</div>
+
+<div class="view-counter">
+    <span id="visit-count">1000</span>
+</div>
+
+<div class="container">
+
+    <h2>Introduction</h2>
+    <p>
+        Communication peripherals are essential for any embedded system or SoC design. This blog covers the most common protocols: UART for serial communication, SPI for high-speed peripherals, I2C for low-pin-count devices, and PWM for motor/LED control.
+    </p>
+
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ol>
+            <li><a href="#uart">UART Transmitter & Receiver</a></li>
+            <li><a href="#spi">SPI Master Controller</a></li>
+            <li><a href="#i2c">I2C Master Controller</a></li>
+            <li><a href="#pwm">PWM Generator</a></li>
+        </ol>
+    </div>
+
+    <hr>
+
+    <!-- PROJECT 1: UART -->
+    <div class="project-card" id="uart">
+        <h3>1. UART Transmitter & Receiver</h3>
+        <p><strong>Difficulty:</strong> Beginner | <strong>Key Learning:</strong> Asynchronous serial communication</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        UART (Universal Asynchronous Receiver/Transmitter) is a serial communication protocol. Data is transmitted one bit at a time with start/stop bits for synchronization.
+    </p>
+
+    <h4>Frame Format</h4>
+    <div class="diagram">    +-------+---+---+---+---+---+---+---+---+------+------+
+    | Start | D0| D1| D2| D3| D4| D5| D6| D7|Parity| Stop |
+    +-------+---+---+---+---+---+---+---+---+------+------+
+        0     LSB                       MSB   (opt)    1
+
+    - Start bit: Always 0 (indicates start of transmission)
+    - Data bits: 5-8 bits (typically 8)
+    - Parity: Optional (even/odd/none)
+    - Stop bits: 1 or 2 (always 1)</div>
+
+    <h4>Baud Rate Calculation</h4>
+    <div class="diagram">Baud Divisor = Clock Frequency / (Baud Rate × Oversampling)
+
+Example: 50 MHz clock, 115200 baud, 16x oversampling
+Divisor = 50,000,000 / (115200 × 16) = 27.13 ≈ 27</div>
+
+    <h4>UART Transmitter Verilog Code</h4>
+    <pre>module uart_tx #(
+    parameter CLK_FREQ  = 50000000,  // 50 MHz
+    parameter BAUD_RATE = 115200,
+    parameter DATA_BITS = 8
+)(
+    input  wire                  clk,
+    input  wire                  rst_n,
+    input  wire [DATA_BITS-1:0]  tx_data,
+    input  wire                  tx_valid,
+    output reg                   tx_ready,
+    output reg                   tx_out
+);
+
+    localparam CLKS_PER_BIT = CLK_FREQ / BAUD_RATE;
+    localparam CNT_WIDTH    = $clog2(CLKS_PER_BIT);
+    
+    // States
+    localparam IDLE  = 3'b000;
+    localparam START = 3'b001;
+    localparam DATA  = 3'b010;
+    localparam STOP  = 3'b011;
+    
+    reg [2:0]               state;
+    reg [CNT_WIDTH-1:0]     clk_cnt;
+    reg [2:0]               bit_idx;
+    reg [DATA_BITS-1:0]     tx_shift;
+    
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state    <= IDLE;
+            tx_out   <= 1'b1;  // Idle high
+            tx_ready <= 1'b1;
+            clk_cnt  <= 0;
+            bit_idx  <= 0;
+        end else begin
+            case (state)
+                IDLE: begin
+                    tx_out   <= 1'b1;
+                    tx_ready <= 1'b1;
+                    clk_cnt  <= 0;
+                    bit_idx  <= 0;
+                    
+                    if (tx_valid) begin
+                        tx_shift <= tx_data;
+                        tx_ready <= 1'b0;
+                        state    <= START;
+                    end
+                end
+                
+                START: begin
+                    tx_out <= 1'b0;  // Start bit
+                    
+                    if (clk_cnt < CLKS_PER_BIT - 1) begin
+                        clk_cnt <= clk_cnt + 1;
+                    end else begin
+                        clk_cnt <= 0;
+                        state   <= DATA;
+                    end
+                end
+                
+                DATA: begin
+                    tx_out <= tx_shift[bit_idx];
+                    
+                    if (clk_cnt < CLKS_PER_BIT - 1) begin
+                        clk_cnt <= clk_cnt + 1;
+                    end else begin
+                        clk_cnt <= 0;
+                        
+                        if (bit_idx < DATA_BITS - 1) begin
+                            bit_idx <= bit_idx + 1;
+                        end else begin
+                            bit_idx <= 0;
+                            state   <= STOP;
+                        end
+                    end
+                end
+                
+                STOP: begin
+                    tx_out <= 1'b1;  // Stop bit
+                    
+                    if (clk_cnt < CLKS_PER_BIT - 1) begin
+                        clk_cnt <= clk_cnt + 1;
+                    end else begin
+                        clk_cnt  <= 0;
+                        tx_ready <= 1'b1;
+                        state    <= IDLE;
+                    end
+                end
+                
+                default: state <= IDLE;
+            endcase
+        end
+    end
+
+endmodule</pre>
+
+    <h4>UART Receiver Verilog Code</h4>
+    <pre>module uart_rx #(
+    parameter CLK_FREQ  = 50000000,
+    parameter BAUD_RATE = 115200,
+    parameter DATA_BITS = 8
+)(
+    input  wire                  clk,
+    input  wire                  rst_n,
+    input  wire                  rx_in,
+    output reg  [DATA_BITS-1:0]  rx_data,
+    output reg                   rx_valid
+);
+
+    localparam CLKS_PER_BIT = CLK_FREQ / BAUD_RATE;
+    localparam CNT_WIDTH    = $clog2(CLKS_PER_BIT);
+    
+    // States
+    localparam IDLE  = 3'b000;
+    localparam START = 3'b001;
+    localparam DATA  = 3'b010;
+    localparam STOP  = 3'b011;
+    
+    reg [2:0]               state;
+    reg [CNT_WIDTH-1:0]     clk_cnt;
+    reg [2:0]               bit_idx;
+    reg [DATA_BITS-1:0]     rx_shift;
+    reg                     rx_sync1, rx_sync2;  // Metastability protection
+    
+    // Double-flop synchronizer for rx_in
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            rx_sync1 <= 1'b1;
+            rx_sync2 <= 1'b1;
+        end else begin
+            rx_sync1 <= rx_in;
+            rx_sync2 <= rx_sync1;
+        end
+    end
+    
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state    <= IDLE;
+            rx_valid <= 1'b0;
+            clk_cnt  <= 0;
+            bit_idx  <= 0;
+            rx_data  <= 0;
+        end else begin
+            rx_valid <= 1'b0;
+            
+            case (state)
+                IDLE: begin
+                    clk_cnt <= 0;
+                    bit_idx <= 0;
+                    
+                    // Detect start bit (falling edge)
+                    if (rx_sync2 == 1'b0) begin
+                        state <= START;
+                    end
+                end
+                
+                START: begin
+                    // Sample at middle of start bit
+                    if (clk_cnt < (CLKS_PER_BIT - 1) / 2) begin
+                        clk_cnt <= clk_cnt + 1;
+                    end else begin
+                        clk_cnt <= 0;
+                        
+                        // Verify start bit is still low
+                        if (rx_sync2 == 1'b0) begin
+                            state <= DATA;
+                        end else begin
+                            state <= IDLE;  // False start
+                        end
+                    end
+                end
+                
+                DATA: begin
+                    if (clk_cnt < CLKS_PER_BIT - 1) begin
+                        clk_cnt <= clk_cnt + 1;
+                    end else begin
+                        clk_cnt <= 0;
+                        rx_shift[bit_idx] <= rx_sync2;
+                        
+                        if (bit_idx < DATA_BITS - 1) begin
+                            bit_idx <= bit_idx + 1;
+                        end else begin
+                            bit_idx <= 0;
+                            state   <= STOP;
+                        end
+                    end
+                end
+                
+                STOP: begin
+                    if (clk_cnt < CLKS_PER_BIT - 1) begin
+                        clk_cnt <= clk_cnt + 1;
+                    end else begin
+                        clk_cnt <= 0;
+                        
+                        if (rx_sync2 == 1'b1) begin
+                            rx_data  <= rx_shift;
+                            rx_valid <= 1'b1;
+                        end
+                        state <= IDLE;
+                    end
+                end
+                
+                default: state <= IDLE;
+            endcase
+        end
+    end
+
+endmodule</pre>
+
+    <hr>
+
+    <!-- PROJECT 2: SPI -->
+    <div class="project-card" id="spi">
+        <h3>2. SPI Master Controller</h3>
+        <p><strong>Difficulty:</strong> Intermediate | <strong>Key Learning:</strong> Synchronous serial, clock polarity/phase</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        SPI (Serial Peripheral Interface) is a synchronous serial protocol with separate data lines for input and output. It's faster than UART and I2C.
+    </p>
+
+    <h4>SPI Signals</h4>
+    <table>
+        <tr>
+            <th>Signal</th>
+            <th>Direction</th>
+            <th>Description</th>
+        </tr>
+        <tr><td>SCLK</td><td>Master → Slave</td><td>Serial Clock</td></tr>
+        <tr><td>MOSI</td><td>Master → Slave</td><td>Master Out, Slave In</td></tr>
+        <tr><td>MISO</td><td>Slave → Master</td><td>Master In, Slave Out</td></tr>
+        <tr><td>CS_N</td><td>Master → Slave</td><td>Chip Select (active low)</td></tr>
+    </table>
+
+    <h4>SPI Modes</h4>
+    <table>
+        <tr>
+            <th>Mode</th>
+            <th>CPOL</th>
+            <th>CPHA</th>
+            <th>Description</th>
+        </tr>
+        <tr><td>0</td><td>0</td><td>0</td><td>Clock idle low, sample on rising edge</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td><td>Clock idle low, sample on falling edge</td></tr>
+        <tr><td>2</td><td>1</td><td>0</td><td>Clock idle high, sample on falling edge</td></tr>
+        <tr><td>3</td><td>1</td><td>1</td><td>Clock idle high, sample on rising edge</td></tr>
+    </table>
+
+    <h4>Verilog Code</h4>
+    <pre>module spi_master #(
+    parameter CLK_DIV   = 4,     // SCLK = clk / (2 * CLK_DIV)
+    parameter DATA_BITS = 8
+)(
+    input  wire                    clk,
+    input  wire                    rst_n,
+    
+    // Control interface
+    input  wire                    start,
+    input  wire [DATA_BITS-1:0]    tx_data,
+    output reg  [DATA_BITS-1:0]    rx_data,
+    output reg                     done,
+    input  wire                    cpol,    // Clock polarity
+    input  wire                    cpha,    // Clock phase
+    
+    // SPI signals
+    output reg                     sclk,
+    output reg                     mosi,
+    input  wire                    miso,
+    output reg                     cs_n
+);
+
+    localparam IDLE     = 2'b00;
+    localparam TRANSFER = 2'b01;
+    localparam DONE     = 2'b10;
+    
+    reg [1:0]               state;
+    reg [$clog2(CLK_DIV):0] clk_cnt;
+    reg [3:0]               bit_cnt;
+    reg [DATA_BITS-1:0]     tx_shift;
+    reg [DATA_BITS-1:0]     rx_shift;
+    reg                     sclk_reg;
+    
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state    <= IDLE;
+            sclk     <= 1'b0;
+            mosi     <= 1'b0;
+            cs_n     <= 1'b1;
+            done     <= 1'b0;
+            clk_cnt  <= 0;
+            bit_cnt  <= 0;
+            sclk_reg <= 1'b0;
+        end else begin
+            done <= 1'b0;
+            
+            case (state)
+                IDLE: begin
+                    sclk     <= cpol;
+                    sclk_reg <= cpol;
+                    cs_n     <= 1'b1;
+                    bit_cnt  <= 0;
+                    
+                    if (start) begin
+                        tx_shift <= tx_data;
+                        cs_n     <= 1'b0;
+                        state    <= TRANSFER;
+                        
+                        if (!cpha)
+                            mosi <= tx_data[DATA_BITS-1];
+                    end
+                end
+                
+                TRANSFER: begin
+                    if (clk_cnt < CLK_DIV - 1) begin
+                        clk_cnt <= clk_cnt + 1;
+                    end else begin
+                        clk_cnt  <= 0;
+                        sclk_reg <= ~sclk_reg;
+                        sclk     <= sclk_reg ^ cpol;
+                        
+                        if (sclk_reg == 1'b0) begin
+                            if (cpha)
+                                mosi <= tx_shift[DATA_BITS-1];
+                            else
+                                rx_shift <= {rx_shift[DATA_BITS-2:0], miso};
+                        end else begin
+                            if (cpha)
+                                rx_shift <= {rx_shift[DATA_BITS-2:0], miso};
+                            else begin
+                                tx_shift <= {tx_shift[DATA_BITS-2:0], 1'b0};
+                                mosi <= tx_shift[DATA_BITS-2];
+                            end
+                            
+                            bit_cnt <= bit_cnt + 1;
+                            
+                            if (bit_cnt == DATA_BITS - 1)
+                                state <= DONE;
+                        end
+                    end
+                end
+                
+                DONE: begin
+                    cs_n    <= 1'b1;
+                    sclk    <= cpol;
+                    rx_data <= rx_shift;
+                    done    <= 1'b1;
+                    state   <= IDLE;
+                end
+                
+                default: state <= IDLE;
+            endcase
+        end
+    end
+
+endmodule</pre>
+
+    <hr>
+
+    <!-- PROJECT 3: I2C -->
+    <div class="project-card" id="i2c">
+        <h3>3. I2C Master Controller</h3>
+        <p><strong>Difficulty:</strong> Advanced | <strong>Key Learning:</strong> Two-wire protocol, open-drain, addressing</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        I2C (Inter-Integrated Circuit) is a two-wire protocol with bidirectional data line (SDA) and clock (SCL). It supports multiple slaves with addressing.
+    </p>
+
+    <h4>I2C Timing</h4>
+    <div class="diagram">    SCL:  ___     _   _   _   _   _   _   _   _   _     ___
+             |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_|
+    
+    SDA:  ___                                         ___
+             |___|_A6_|_A5_|_A4_|_A3_|_A2_|_A1_|_A0_|R/W|ACK|
+          START                                        STOP
+          
+    START: SDA falls while SCL high
+    STOP:  SDA rises while SCL high</div>
+
+    <h4>Verilog Code</h4>
+    <pre>module i2c_master #(
+    parameter CLK_FREQ  = 50000000,
+    parameter I2C_FREQ  = 100000     // 100 kHz standard mode
+)(
+    input  wire        clk,
+    input  wire        rst_n,
+    
+    // Control interface
+    input  wire        start,
+    input  wire        stop,
+    input  wire        read,
+    input  wire        write,
+    input  wire        ack_in,      // ACK to send for read
+    input  wire [7:0]  data_in,
+    output reg  [7:0]  data_out,
+    output reg         ack_out,     // ACK received
+    output reg         busy,
+    
+    // I2C signals (directly directly directly directly open-drain)
+    output reg         scl_oen,     // SCL output enable (active low)
+    output reg         sda_oen,     // SDA output enable (active low)
+    input  wire        scl_in,
+    input  wire        sda_in
+);
+
+    localparam CLK_DIV = CLK_FREQ / (I2C_FREQ * 4);
+    
+    // States
+    localparam IDLE      = 4'h0;
+    localparam START_A   = 4'h1;
+    localparam START_B   = 4'h2;
+    localparam WRITE_BIT = 4'h3;
+    localparam READ_BIT  = 4'h4;
+    localparam ACK_SEND  = 4'h5;
+    localparam ACK_RECV  = 4'h6;
+    localparam STOP_A    = 4'h7;
+    localparam STOP_B    = 4'h8;
+    
+    reg [3:0]  state;
+    reg [15:0] clk_cnt;
+    reg [2:0]  bit_cnt;
+    reg [7:0]  shift_reg;
+    
+    wire clk_en = (clk_cnt == CLK_DIV - 1);
+    
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            clk_cnt <= 0;
+        else if (clk_en)
+            clk_cnt <= 0;
+        else
+            clk_cnt <= clk_cnt + 1;
+    end
+    
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state   <= IDLE;
+            scl_oen <= 1'b1;
+            sda_oen <= 1'b1;
+            busy    <= 1'b0;
+            bit_cnt <= 0;
+        end else if (clk_en) begin
+            case (state)
+                IDLE: begin
+                    scl_oen <= 1'b1;
+                    sda_oen <= 1'b1;
+                    busy    <= 1'b0;
+                    
+                    if (start) begin
+                        state <= START_A;
+                        busy  <= 1'b1;
+                    end else if (write) begin
+                        shift_reg <= data_in;
+                        bit_cnt   <= 0;
+                        state     <= WRITE_BIT;
+                        busy      <= 1'b1;
+                    end else if (read) begin
+                        bit_cnt <= 0;
+                        state   <= READ_BIT;
+                        busy    <= 1'b1;
+                    end else if (stop) begin
+                        state <= STOP_A;
+                        busy  <= 1'b1;
+                    end
+                end
+                
+                START_A: begin
+                    sda_oen <= 1'b0;  // SDA low
+                    state   <= START_B;
+                end
+                
+                START_B: begin
+                    scl_oen <= 1'b0;  // SCL low
+                    state   <= IDLE;
+                end
+                
+                WRITE_BIT: begin
+                    sda_oen   <= ~shift_reg[7];
+                    scl_oen   <= 1'b1;
+                    shift_reg <= {shift_reg[6:0], 1'b0};
+                    bit_cnt   <= bit_cnt + 1;
+                    
+                    if (bit_cnt == 7)
+                        state <= ACK_RECV;
+                end
+                
+                ACK_RECV: begin
+                    sda_oen <= 1'b1;
+                    ack_out <= ~sda_in;
+                    scl_oen <= 1'b0;
+                    state   <= IDLE;
+                end
+                
+                READ_BIT: begin
+                    sda_oen   <= 1'b1;
+                    scl_oen   <= 1'b1;
+                    shift_reg <= {shift_reg[6:0], sda_in};
+                    bit_cnt   <= bit_cnt + 1;
+                    
+                    if (bit_cnt == 7) begin
+                        data_out <= {shift_reg[6:0], sda_in};
+                        state    <= ACK_SEND;
+                    end
+                end
+                
+                ACK_SEND: begin
+                    sda_oen <= ~ack_in;
+                    scl_oen <= 1'b0;
+                    state   <= IDLE;
+                end
+                
+                STOP_A: begin
+                    sda_oen <= 1'b0;
+                    scl_oen <= 1'b1;
+                    state   <= STOP_B;
+                end
+                
+                STOP_B: begin
+                    sda_oen <= 1'b1;
+                    state   <= IDLE;
+                end
+                
+                default: state <= IDLE;
+            endcase
+        end
+    end
+
+endmodule</pre>
+
+    <hr>
+
+    <!-- PROJECT 4: PWM -->
+    <div class="project-card" id="pwm">
+        <h3>4. PWM Generator</h3>
+        <p><strong>Difficulty:</strong> Beginner | <strong>Key Learning:</strong> Pulse width modulation, duty cycle control</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        PWM (Pulse Width Modulation) generates a square wave with variable duty cycle, used for motor speed control, LED dimming, and analog signal generation.
+    </p>
+
+    <h4>Block Diagram</h4>
+    <div class="diagram">                        +-------------+
+    duty_cycle[N:0] --->|             |
+                        |   Counter   |---> pwm_out
+    clk --------------->|   Compare   |
+    rst_n ------------->|             |
+                        +-------------+
+    
+    PWM Output:
+    |<------- Period ------->|
+    +--------+               +--------+
+    |        |               |        |
+    +        +---------------+        +----
+    |<-Duty->|
+    
+    Duty Cycle = duty_cycle / (2^N) × 100%</div>
+
+    <h4>Verilog Code</h4>
+    <pre>module pwm_generator #(
+    parameter RESOLUTION = 8,    // 8-bit resolution (256 levels)
+    parameter CLK_DIV    = 1     // Clock divider
+)(
+    input  wire                    clk,
+    input  wire                    rst_n,
+    input  wire [RESOLUTION-1:0]   duty_cycle,
+    input  wire                    enable,
+    output reg                     pwm_out
+);
+
+    reg [RESOLUTION-1:0] counter;
+    reg [$clog2(CLK_DIV):0] prescaler;
+    wire clk_en;
+    
+    // Prescaler
+    generate
+        if (CLK_DIV > 1) begin
+            always @(posedge clk or negedge rst_n) begin
+                if (!rst_n)
+                    prescaler <= 0;
+                else if (prescaler == CLK_DIV - 1)
+                    prescaler <= 0;
+                else
+                    prescaler <= prescaler + 1;
+            end
+            assign clk_en = (prescaler == 0);
+        end else begin
+            assign clk_en = 1'b1;
+        end
+    endgenerate
+    
+    // Counter
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            counter <= 0;
+        else if (clk_en)
+            counter <= counter + 1;
+    end
+    
+    // PWM output
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            pwm_out <= 1'b0;
+        else if (!enable)
+            pwm_out <= 1'b0;
+        else
+            pwm_out <= (counter < duty_cycle);
+    end
+
+endmodule</pre>
+
+    <h4>Multi-Channel PWM</h4>
+    <pre>module pwm_multi_channel #(
+    parameter RESOLUTION = 8,
+    parameter NUM_CHANNELS = 4
+)(
+    input  wire                              clk,
+    input  wire                              rst_n,
+    input  wire [RESOLUTION*NUM_CHANNELS-1:0] duty_cycles,
+    input  wire [NUM_CHANNELS-1:0]           enable,
+    output wire [NUM_CHANNELS-1:0]           pwm_out
+);
+
+    reg [RESOLUTION-1:0] counter;
+    
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            counter <= 0;
+        else
+            counter <= counter + 1;
+    end
+    
+    genvar i;
+    generate
+        for (i = 0; i < NUM_CHANNELS; i = i + 1) begin : gen_pwm
+            wire [RESOLUTION-1:0] duty = duty_cycles[RESOLUTION*(i+1)-1 : RESOLUTION*i];
+            assign pwm_out[i] = enable[i] & (counter < duty);
+        end
+    endgenerate
+
+endmodule</pre>
+
+    <hr>
+
+    <!-- Protocol Comparison -->
+    <h2>Protocol Comparison</h2>
+    
+    <table class="summary-table">
+        <tr>
+            <th>Feature</th>
+            <th>UART</th>
+            <th>SPI</th>
+            <th>I2C</th>
+        </tr>
+        <tr>
+            <td>Wires</td>
+            <td>2 (TX, RX)</td>
+            <td>4 (SCLK, MOSI, MISO, CS)</td>
+            <td>2 (SDA, SCL)</td>
+        </tr>
+        <tr>
+            <td>Speed</td>
+            <td>Up to 1 Mbps</td>
+            <td>Up to 100 MHz</td>
+            <td>Up to 3.4 Mbps</td>
+        </tr>
+        <tr>
+            <td>Duplex</td>
+            <td>Full</td>
+            <td>Full</td>
+            <td>Half</td>
+        </tr>
+        <tr>
+            <td>Multi-slave</td>
+            <td>No</td>
+            <td>Yes (separate CS)</td>
+            <td>Yes (addressing)</td>
+        </tr>
+        <tr>
+            <td>Clock</td>
+            <td>Asynchronous</td>
+            <td>Synchronous</td>
+            <td>Synchronous</td>
+        </tr>
+        <tr>
+            <td>Complexity</td>
+            <td>Low</td>
+            <td>Medium</td>
+            <td>High</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <div class="interview-box">
+        <h3>Interview Questions</h3>
+        <ol>
+            <li><strong>Why does UART need start/stop bits?</strong> - For synchronization in asynchronous communication</li>
+            <li><strong>Explain SPI clock polarity and phase.</strong> - CPOL: Idle state of clock; CPHA: Which edge to sample data</li>
+            <li><strong>How does I2C handle bus contention?</strong> - Open-drain with arbitration; wired-AND allows collision detection</li>
+            <li><strong>How to calculate PWM frequency?</strong> - PWM_freq = CLK_freq / (2^RESOLUTION × CLK_DIV)</li>
+        </ol>
+    </div>
+
+    <h2>Next Steps</h2>
+    <p>After mastering communication protocols, proceed to:</p>
+    <ul>
+        <li>Processor architecture (RISC-V)</li>
+        <li>AMBA bus protocols (AXI, AHB, APB)</li>
+        <li>Advanced system designs</li>
+    </ul>
+
+    <div class="blog-nav">
+        <a href="memory-fifo.html">← Previous: Memory & FIFO Design</a>
+        <span></span>
+    </div>
+
+    <div class="tags">
+        <span class="tag">#Verilog</span>
+        <span class="tag">#UART</span>
+        <span class="tag">#SPI</span>
+        <span class="tag">#I2C</span>
+        <span class="tag">#PWM</span>
+        <span class="tag">#VLSI</span>
+        <span class="tag">#FPGA</span>
+        <span class="tag">#ASIC</span>
+    </div>
+
+</div>
+
+<footer>
+    <p>Code examples are for educational purposes. Verify functionality before production use.</p>
+</footer>
+
+<script type="module">
+    // Firebase Global Counter
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+        databaseURL: "https://vlsi-blog-counter-default-rtdb.firebaseio.com/"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const counterRef = ref(database, 'blog03Views');
+
+    runTransaction(counterRef, (currentValue) => {
+        if (currentValue === null) {
+            return 1000;
+        }
+        return currentValue + 1;
+    }).then((result) => {
+        document.getElementById('visit-count').textContent = result.snapshot.val();
+    }).catch((error) => {
+        console.error('Counter error:', error);
+        document.getElementById('visit-count').textContent = '1000+';
+    });
+</script>
+
+</body>
+</html>
