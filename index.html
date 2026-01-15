@@ -203,12 +203,52 @@
             border-top: 1px solid #ddd;
             margin: 40px 0;
         }
+        .nav-bar {
+            background: #0f3460;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.95em;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+        .nav-bar a.active {
+            font-weight: bold;
+            border-bottom: 2px solid #4fc3f7;
+        }
+        .blog-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .blog-nav a {
+            color: #0f3460;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .blog-nav a:hover {
+            text-decoration: underline;
+        }
         .summary-table {
             margin: 30px 0;
         }
     </style>
 </head>
 <body>
+
+<div class="nav-bar">
+    <a href="index.html" class="active">01: Core RTL</a>
+    <a href="memory-fifo.html">02: Memory & FIFO</a>
+</div>
+
 
 <div class="header-banner">
     <h1>Must-Know Core RTL Projects for VLSI Engineers</h1>
@@ -871,6 +911,11 @@ endmodule</pre>
         <li>Processor architecture (RISC-V)</li>
     </ul>
 
+
+    <div class="blog-nav">
+        <span></span>
+        <a href="memory-fifo.html">Next: Memory & FIFO Design </a>
+    </div>
     <div class="tags">
         <span class="tag">#Verilog</span>
         <span class="tag">#RTL Design</span>
