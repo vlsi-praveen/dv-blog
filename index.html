@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Must-Know Core RTL Projects for VLSI Engineers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f8f9fa;
+        }
+        .header-banner {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .header-banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .header-banner .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .header-banner .meta {
+            margin-top: 20px;
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1a1a2e;
+            font-size: 1.8em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #0f3460;
+        }
+        h3 {
+            color: #16213e;
+            font-size: 1.4em;
+            margin: 30px 0 15px 0;
+        }
+        h4 {
+            color: #333;
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #0f3460;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .toc {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: #0f3460;
+        }
+        .toc ol {
+            margin-left: 25px;
+        }
+        .toc li {
+            margin: 8px 0;
+        }
+        .toc a {
+            color: #0f3460;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .project-card {
+            background: linear-gradient(to right, #f8f9fa, #e8f4f8);
+            border-left: 4px solid #0f3460;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #0f3460;
+        }
+        .interview-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .interview-box h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .tags {
+            margin-top: 30px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e8f4f8;
+            color: #0f3460;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.85em;
+        }
+        .diagram {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85em;
+            overflow-x: auto;
+            white-space: pre;
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 40px 0;
+        }
+        .summary-table {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-banner">
+    <h1>Must-Know Core RTL Projects for VLSI Engineers</h1>
+    <p class="subtitle">Master Digital Design with Complete Verilog Implementations</p>
+    <p class="meta"><strong>Praveen Kumar Vagala</strong> | 15 min read</p>
+</div>
+
+<div class="container">
+
+    <h2>Introduction</h2>
+    <p>
+        Core RTL and digital design form the foundation of any VLSI engineer's skillset. This blog covers essential building blocks that every hardware designer must master - from arithmetic units to data manipulation circuits.
+    </p>
+
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ol>
+            <li><a href="#alu">16-bit ALU Design</a></li>
+            <li><a href="#pipelined">Pipelined ALU Architecture</a></li>
+            <li><a href="#wallace">Wallace Tree Multiplier</a></li>
+            <li><a href="#booth">Booth Multiplier</a></li>
+            <li><a href="#cla">Carry Look-Ahead Adder (CLA)</a></li>
+            <li><a href="#barrel">Barrel Shifter Design</a></li>
+            <li><a href="#regfile">Configurable Register File</a></li>
+        </ol>
+    </div>
+
+    <hr>
+
+    <!-- PROJECT 1: 16-bit ALU -->
+    <div class="project-card" id="alu">
+        <h3>1. 16-bit ALU Design</h3>
+        <p><strong>Difficulty:</strong> Beginner | <strong>Key Learning:</strong> Basic arithmetic & logic operations</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        An Arithmetic Logic Unit (ALU) is the computational heart of any processor. It performs arithmetic operations (add, subtract, multiply) and logical operations (AND, OR, XOR, NOT).
+    </p>
+
+    <h4>Block Diagram</h4>
+    <div class="diagram">                    +------------------+
+    A[15:0] ------->|                  |
+                    |                  |
+    B[15:0] ------->|      ALU        |-------> Result[15:0]
+                    |                  |
+    OpCode[3:0] --->|                  |-------> Flags (Z, N, C, V)
+                    +------------------+</div>
+
+    <h4>Verilog Code</h4>
+    <pre>module alu_16bit (
+    input  wire [15:0] a,
+    input  wire [15:0] b,
+    input  wire [3:0]  opcode,
+    output reg  [15:0] result,
+    output wire        zero,
+    output wire        negative,
+    output wire        carry,
+    output wire        overflow
+);
+
+    reg carry_out;
+    reg overflow_flag;
+
+    // ALU Operations
+    localparam ADD  = 4'b0000;
+    localparam SUB  = 4'b0001;
+    localparam AND  = 4'b0010;
+    localparam OR   = 4'b0011;
+    localparam XOR  = 4'b0100;
+    localparam NOT  = 4'b0101;
+    localparam SHL  = 4'b0110;  // Shift Left
+    localparam SHR  = 4'b0111;  // Shift Right
+    localparam INC  = 4'b1000;  // Increment
+    localparam DEC  = 4'b1001;  // Decrement
+
+    always @(*) begin
+        carry_out = 1'b0;
+        overflow_flag = 1'b0;
+        
+        case (opcode)
+            ADD: begin
+                {carry_out, result} = a + b;
+                overflow_flag = (a[15] == b[15]) && (result[15] != a[15]);
+            end
+            
+            SUB: begin
+                {carry_out, result} = a - b;
+                overflow_flag = (a[15] != b[15]) && (result[15] != a[15]);
+            end
+            
+            AND: result = a & b;
+            OR:  result = a | b;
+            XOR: result = a ^ b;
+            NOT: result = ~a;
+            SHL: result = a << b[3:0];
+            SHR: result = a >> b[3:0];
+            INC: {carry_out, result} = a + 1;
+            DEC: {carry_out, result} = a - 1;
+            
+            default: result = 16'h0000;
+        endcase
+    end
+
+    // Flag assignments
+    assign zero     = (result == 16'h0000);
+    assign negative = result[15];
+    assign carry    = carry_out;
+    assign overflow = overflow_flag;
+
+endmodule</pre>
+
+    <h4>Testbench</h4>
+    <pre>module tb_alu_16bit;
+    reg  [15:0] a, b;
+    reg  [3:0]  opcode;
+    wire [15:0] result;
+    wire        zero, negative, carry, overflow;
+
+    alu_16bit uut (
+        .a(a), .b(b), .opcode(opcode),
+        .result(result), .zero(zero),
+        .negative(negative), .carry(carry), .overflow(overflow)
+    );
+
+    initial begin
+        $monitor("Time=%0t Op=%b A=%h B=%h Result=%h Z=%b N=%b C=%b V=%b",
+                 $time, opcode, a, b, result, zero, negative, carry, overflow);
+
+        // Test ADD
+        a = 16'h0005; b = 16'h0003; opcode = 4'b0000; #10;
+        
+        // Test SUB
+        a = 16'h0010; b = 16'h0005; opcode = 4'b0001; #10;
+        
+        // Test AND
+        a = 16'hFF00; b = 16'h0F0F; opcode = 4'b0010; #10;
+        
+        // Test overflow
+        a = 16'h7FFF; b = 16'h0001; opcode = 4'b0000; #10;
+        
+        $finish;
+    end
+endmodule</pre>
+
+    <h4>Common Mistakes to Avoid</h4>
+    <ol>
+        <li><strong>Forgetting overflow detection</strong> - Critical for signed arithmetic</li>
+        <li><strong>Not handling all opcodes</strong> - Always have a default case</li>
+        <li><strong>Mixing blocking/non-blocking</strong> - Use blocking (=) in combinational always blocks</li>
+    </ol>
+
+    <div class="interview-box">
+        <h3>Interview Questions</h3>
+        <ol>
+            <li>What's the difference between carry and overflow flags?</li>
+            <li>How would you extend this ALU to support multiplication?</li>
+            <li>Explain signed vs unsigned overflow detection.</li>
+        </ol>
+    </div>
+
+    <hr>
+
+    <!-- PROJECT 2: Pipelined ALU -->
+    <div class="project-card" id="pipelined">
+        <h3>2. Pipelined ALU Architecture</h3>
+        <p><strong>Difficulty:</strong> Intermediate | <strong>Key Learning:</strong> Pipeline stages, throughput vs latency</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        A pipelined ALU breaks operations into stages, allowing multiple operations to execute simultaneously. This increases throughput at the cost of latency.
+    </p>
+
+    <h4>Block Diagram</h4>
+    <div class="diagram">Stage 1         Stage 2         Stage 3
++--------+      +--------+      +--------+
+| Decode |  ->  | Execute|  ->  | Write  |
+| & Fetch|      |        |      | Back   |
++--------+      +--------+      +--------+
+    |               |               |
+   Reg             Reg             Reg</div>
+
+    <h4>Verilog Code</h4>
+    <pre>module pipelined_alu (
+    input  wire        clk,
+    input  wire        rst_n,
+    input  wire [15:0] a,
+    input  wire [15:0] b,
+    input  wire [3:0]  opcode,
+    input  wire        valid_in,
+    output reg  [15:0] result,
+    output reg         valid_out
+);
+
+    // Pipeline Stage 1: Input Registration
+    reg [15:0] a_s1, b_s1;
+    reg [3:0]  opcode_s1;
+    reg        valid_s1;
+
+    // Pipeline Stage 2: Execution
+    reg [15:0] result_s2;
+    reg        valid_s2;
+
+    // Stage 1: Register inputs
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            a_s1      <= 16'h0;
+            b_s1      <= 16'h0;
+            opcode_s1 <= 4'h0;
+            valid_s1  <= 1'b0;
+        end else begin
+            a_s1      <= a;
+            b_s1      <= b;
+            opcode_s1 <= opcode;
+            valid_s1  <= valid_in;
+        end
+    end
+
+    // Stage 2: Execute operation
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            result_s2 <= 16'h0;
+            valid_s2  <= 1'b0;
+        end else begin
+            valid_s2 <= valid_s1;
+            case (opcode_s1)
+                4'b0000: result_s2 <= a_s1 + b_s1;
+                4'b0001: result_s2 <= a_s1 - b_s1;
+                4'b0010: result_s2 <= a_s1 & b_s1;
+                4'b0011: result_s2 <= a_s1 | b_s1;
+                4'b0100: result_s2 <= a_s1 ^ b_s1;
+                default: result_s2 <= 16'h0;
+            endcase
+        end
+    end
+
+    // Stage 3: Output registration
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            result    <= 16'h0;
+            valid_out <= 1'b0;
+        end else begin
+            result    <= result_s2;
+            valid_out <= valid_s2;
+        end
+    end
+
+endmodule</pre>
+
+    <h4>Key Points</h4>
+    <ul>
+        <li><strong>Latency:</strong> 3 clock cycles from input to output</li>
+        <li><strong>Throughput:</strong> 1 result per clock cycle (after pipeline is full)</li>
+        <li><strong>Pipeline registers</strong> isolate each stage</li>
+    </ul>
+
+    <hr>
+
+    <!-- PROJECT 3: Wallace Tree -->
+    <div class="project-card" id="wallace">
+        <h3>3. Wallace Tree Multiplier</h3>
+        <p><strong>Difficulty:</strong> Advanced | <strong>Key Learning:</strong> Parallel reduction, CSA</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        Wallace Tree is a fast multiplication technique that reduces partial products in parallel using carry-save adders, achieving O(log n) reduction stages.
+    </p>
+
+    <h4>Block Diagram</h4>
+    <div class="diagram">Partial Products:    PP0, PP1, PP2, PP3, PP4, PP5, PP6, PP7
+                            |
+                    +-------v-------+
+                    | CSA Layer 1   |  (Reduce 8 to 6)
+                    +-------+-------+
+                            |
+                    +-------v-------+
+                    | CSA Layer 2   |  (Reduce 6 to 4)
+                    +-------+-------+
+                            |
+                    +-------v-------+
+                    | CSA Layer 3   |  (Reduce 4 to 3)
+                    +-------+-------+
+                            |
+                    +-------v-------+
+                    | CSA Layer 4   |  (Reduce 3 to 2)
+                    +-------+-------+
+                            |
+                    +-------v-------+
+                    | Final Adder   |  (CLA/RCA)
+                    +-------+-------+
+                            |
+                        Product</div>
+
+    <h4>Verilog Code (4-bit Wallace Tree)</h4>
+    <pre>module wallace_tree_4bit (
+    input  wire [3:0] a,
+    input  wire [3:0] b,
+    output wire [7:0] product
+);
+
+    // Generate partial products
+    wire [3:0] pp0 = a & {4{b[0]}};
+    wire [3:0] pp1 = a & {4{b[1]}};
+    wire [3:0] pp2 = a & {4{b[2]}};
+    wire [3:0] pp3 = a & {4{b[3]}};
+
+    // Align partial products
+    wire [7:0] pp0_aligned = {4'b0, pp0};
+    wire [7:0] pp1_aligned = {3'b0, pp1, 1'b0};
+    wire [7:0] pp2_aligned = {2'b0, pp2, 2'b0};
+    wire [7:0] pp3_aligned = {1'b0, pp3, 3'b0};
+
+    // CSA Layer 1: Reduce 4 partial products to 2
+    wire [7:0] sum1, carry1, sum2, carry2;
+    
+    // First CSA
+    assign sum1   = pp0_aligned ^ pp1_aligned ^ pp2_aligned;
+    assign carry1 = ((pp0_aligned & pp1_aligned) | 
+                     (pp1_aligned & pp2_aligned) | 
+                     (pp0_aligned & pp2_aligned)) << 1;
+    
+    // Second level
+    assign sum2   = sum1 ^ carry1 ^ pp3_aligned;
+    assign carry2 = ((sum1 & carry1) | 
+                     (carry1 & pp3_aligned) | 
+                     (sum1 & pp3_aligned)) << 1;
+
+    // Final addition
+    assign product = sum2 + carry2;
+
+endmodule</pre>
+
+    <h4>Advantages</h4>
+    <ul>
+        <li>Faster than array multiplier</li>
+        <li>Parallel reduction of partial products</li>
+        <li>Used in high-performance processors</li>
+    </ul>
+
+    <hr>
+
+    <!-- PROJECT 4: Booth Multiplier -->
+    <div class="project-card" id="booth">
+        <h3>4. Booth Multiplier</h3>
+        <p><strong>Difficulty:</strong> Intermediate | <strong>Key Learning:</strong> Signed multiplication, encoding</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        Booth's algorithm reduces the number of partial products by encoding multiplier bits, handling signed multiplication efficiently.
+    </p>
+
+    <h4>Booth Encoding Table</h4>
+    <table>
+        <tr><th>Current Bit</th><th>Previous Bit</th><th>Action</th></tr>
+        <tr><td>0</td><td>0</td><td>No operation</td></tr>
+        <tr><td>0</td><td>1</td><td>Add multiplicand</td></tr>
+        <tr><td>1</td><td>0</td><td>Subtract multiplicand</td></tr>
+        <tr><td>1</td><td>1</td><td>No operation</td></tr>
+    </table>
+
+    <h4>Verilog Code</h4>
+    <pre>module booth_multiplier_8bit (
+    input  wire signed [7:0]  multiplicand,
+    input  wire signed [7:0]  multiplier,
+    output reg  signed [15:0] product
+);
+
+    reg signed [15:0] a;      // Accumulator
+    reg signed [8:0]  q;      // Multiplier with Q-1
+    reg signed [7:0]  m;      // Multiplicand
+    integer i;
+
+    always @(*) begin
+        a = 16'b0;
+        q = {multiplier, 1'b0};  // Q-1 = 0 initially
+        m = multiplicand;
+
+        for (i = 0; i < 8; i = i + 1) begin
+            case (q[1:0])
+                2'b01: a = a + {m, 8'b0};    // Add
+                2'b10: a = a - {m, 8'b0};    // Subtract
+                default: ;                    // No operation
+            endcase
+            
+            // Arithmetic right shift {A, Q}
+            {a, q} = {a[15], a, q[8:1]};
+        end
+
+        product = {a[7:0], q[8:1]};
+    end
+
+endmodule</pre>
+
+    <hr>
+
+    <!-- PROJECT 5: CLA -->
+    <div class="project-card" id="cla">
+        <h3>5. Carry Look-Ahead Adder (CLA)</h3>
+        <p><strong>Difficulty:</strong> Intermediate | <strong>Key Learning:</strong> Carry prediction, G and P signals</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        CLA eliminates ripple carry delay by computing all carries in parallel using Generate (G) and Propagate (P) signals.
+    </p>
+
+    <h4>Formulas</h4>
+    <div class="diagram">G[i] = A[i] & B[i]      (Generate)
+P[i] = A[i] ^ B[i]      (Propagate)
+
+C[1] = G[0] | (P[0] & C[0])
+C[2] = G[1] | (P[1] & G[0]) | (P[1] & P[0] & C[0])
+C[3] = G[2] | (P[2] & G[1]) | (P[2] & P[1] & G[0]) | (P[2] & P[1] & P[0] & C[0])
+C[4] = G[3] | (P[3] & G[2]) | (P[3] & P[2] & G[1]) | (P[3] & P[2] & P[1] & G[0]) | (P[3] & P[2] & P[1] & P[0] & C[0])</div>
+
+    <h4>Verilog Code</h4>
+    <pre>module carry_lookahead_adder_4bit (
+    input  wire [3:0] a,
+    input  wire [3:0] b,
+    input  wire       cin,
+    output wire [3:0] sum,
+    output wire       cout
+);
+
+    wire [3:0] g, p;    // Generate and Propagate
+    wire [4:0] c;       // Carries
+
+    // Generate and Propagate
+    assign g = a & b;
+    assign p = a ^ b;
+
+    // Carry Look-Ahead Logic
+    assign c[0] = cin;
+    assign c[1] = g[0] | (p[0] & c[0]);
+    assign c[2] = g[1] | (p[1] & g[0]) | (p[1] & p[0] & c[0]);
+    assign c[3] = g[2] | (p[2] & g[1]) | (p[2] & p[1] & g[0]) | 
+                  (p[2] & p[1] & p[0] & c[0]);
+    assign c[4] = g[3] | (p[3] & g[2]) | (p[3] & p[2] & g[1]) | 
+                  (p[3] & p[2] & p[1] & g[0]) | (p[3] & p[2] & p[1] & p[0] & c[0]);
+
+    // Sum
+    assign sum  = p ^ c[3:0];
+    assign cout = c[4];
+
+endmodule</pre>
+
+    <hr>
+
+    <!-- PROJECT 6: Barrel Shifter -->
+    <div class="project-card" id="barrel">
+        <h3>6. Barrel Shifter Design</h3>
+        <p><strong>Difficulty:</strong> Beginner | <strong>Key Learning:</strong> MUX-based shifting</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        A barrel shifter can shift data by any number of positions in a single clock cycle using multiplexer layers.
+    </p>
+
+    <h4>Verilog Code</h4>
+    <pre>module barrel_shifter_8bit (
+    input  wire [7:0] data_in,
+    input  wire [2:0] shift_amt,
+    input  wire       shift_dir,    // 0=left, 1=right
+    input  wire       arithmetic,   // 1=arithmetic shift (sign extend)
+    output reg  [7:0] data_out
+);
+
+    always @(*) begin
+        if (shift_dir == 1'b0) begin
+            // Left shift
+            data_out = data_in << shift_amt;
+        end else begin
+            // Right shift
+            if (arithmetic)
+                data_out = $signed(data_in) >>> shift_amt;
+            else
+                data_out = data_in >> shift_amt;
+        end
+    end
+
+endmodule
+
+// Alternative: Multiplexer-based barrel shifter
+module barrel_shifter_mux (
+    input  wire [7:0] data_in,
+    input  wire [2:0] shift_amt,
+    output wire [7:0] data_out
+);
+
+    wire [7:0] stage0, stage1, stage2;
+
+    // Stage 0: Shift by 0 or 1
+    assign stage0 = shift_amt[0] ? {data_in[6:0], 1'b0} : data_in;
+
+    // Stage 1: Shift by 0 or 2
+    assign stage1 = shift_amt[1] ? {stage0[5:0], 2'b0} : stage0;
+
+    // Stage 2: Shift by 0 or 4
+    assign stage2 = shift_amt[2] ? {stage1[3:0], 4'b0} : stage1;
+
+    assign data_out = stage2;
+
+endmodule</pre>
+
+    <hr>
+
+    <!-- PROJECT 7: Register File -->
+    <div class="project-card" id="regfile">
+        <h3>7. Configurable Register File</h3>
+        <p><strong>Difficulty:</strong> Intermediate | <strong>Key Learning:</strong> Memory design, read/write ports</p>
+    </div>
+
+    <h4>Concept</h4>
+    <p>
+        A register file is a collection of registers with read and write ports, commonly used in processor designs.
+    </p>
+
+    <h4>Verilog Code</h4>
+    <pre>module register_file #(
+    parameter DATA_WIDTH = 32,
+    parameter ADDR_WIDTH = 5,
+    parameter NUM_REGS   = 32
+)(
+    input  wire                    clk,
+    input  wire                    rst_n,
+    
+    // Write Port
+    input  wire                    wr_en,
+    input  wire [ADDR_WIDTH-1:0]   wr_addr,
+    input  wire [DATA_WIDTH-1:0]   wr_data,
+    
+    // Read Port 1
+    input  wire [ADDR_WIDTH-1:0]   rd_addr1,
+    output wire [DATA_WIDTH-1:0]   rd_data1,
+    
+    // Read Port 2
+    input  wire [ADDR_WIDTH-1:0]   rd_addr2,
+    output wire [DATA_WIDTH-1:0]   rd_data2
+);
+
+    // Register array
+    reg [DATA_WIDTH-1:0] registers [0:NUM_REGS-1];
+    integer i;
+
+    // Write operation (synchronous)
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            for (i = 0; i < NUM_REGS; i = i + 1)
+                registers[i] <= {DATA_WIDTH{1'b0}};
+        end else if (wr_en && wr_addr != 0) begin
+            // Register 0 is hardwired to zero (RISC-V convention)
+            registers[wr_addr] <= wr_data;
+        end
+    end
+
+    // Read operations (asynchronous)
+    assign rd_data1 = (rd_addr1 == 0) ? {DATA_WIDTH{1'b0}} : registers[rd_addr1];
+    assign rd_data2 = (rd_addr2 == 0) ? {DATA_WIDTH{1'b0}} : registers[rd_addr2];
+
+endmodule</pre>
+
+    <h4>Testbench</h4>
+    <pre>module tb_register_file;
+    parameter DATA_WIDTH = 32;
+    parameter ADDR_WIDTH = 5;
+
+    reg                    clk, rst_n;
+    reg                    wr_en;
+    reg  [ADDR_WIDTH-1:0]  wr_addr, rd_addr1, rd_addr2;
+    reg  [DATA_WIDTH-1:0]  wr_data;
+    wire [DATA_WIDTH-1:0]  rd_data1, rd_data2;
+
+    register_file uut (.*);
+
+    always #5 clk = ~clk;
+
+    initial begin
+        clk = 0; rst_n = 0; wr_en = 0;
+        #20 rst_n = 1;
+
+        // Write to register 5
+        @(posedge clk);
+        wr_en = 1; wr_addr = 5; wr_data = 32'hDEADBEEF;
+        
+        @(posedge clk);
+        wr_en = 0;
+        
+        // Read from register 5
+        rd_addr1 = 5; rd_addr2 = 0;
+        #1;
+        $display("R5 = %h, R0 = %h", rd_data1, rd_data2);
+
+        #50 $finish;
+    end
+endmodule</pre>
+
+    <hr>
+
+    <!-- Summary -->
+    <h2>Summary</h2>
+    
+    <table class="summary-table">
+        <tr>
+            <th>Design</th>
+            <th>Complexity</th>
+            <th>Key Learning</th>
+        </tr>
+        <tr>
+            <td>16-bit ALU</td>
+            <td>Beginner</td>
+            <td>Basic arithmetic & logic operations</td>
+        </tr>
+        <tr>
+            <td>Pipelined ALU</td>
+            <td>Intermediate</td>
+            <td>Pipeline stages, throughput vs latency</td>
+        </tr>
+        <tr>
+            <td>Wallace Tree</td>
+            <td>Advanced</td>
+            <td>Parallel reduction, CSA</td>
+        </tr>
+        <tr>
+            <td>Booth Multiplier</td>
+            <td>Intermediate</td>
+            <td>Signed multiplication, encoding</td>
+        </tr>
+        <tr>
+            <td>CLA</td>
+            <td>Intermediate</td>
+            <td>Carry prediction, G and P signals</td>
+        </tr>
+        <tr>
+            <td>Barrel Shifter</td>
+            <td>Beginner</td>
+            <td>MUX-based shifting</td>
+        </tr>
+        <tr>
+            <td>Register File</td>
+            <td>Intermediate</td>
+            <td>Memory design, read/write ports</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Next Steps</h2>
+    <p>After mastering these fundamentals, proceed to:</p>
+    <ul>
+        <li>Memory & FIFO designs</li>
+        <li>Communication protocols (UART, SPI, I2C)</li>
+        <li>Processor architecture (RISC-V)</li>
+    </ul>
+
+    <div class="tags">
+        <span class="tag">#Verilog</span>
+        <span class="tag">#RTL Design</span>
+        <span class="tag">#VLSI</span>
+        <span class="tag">#Digital Design</span>
+        <span class="tag">#ALU</span>
+        <span class="tag">#Multiplier</span>
+        <span class="tag">#FPGA</span>
+        <span class="tag">#ASIC</span>
+    </div>
+
+</div>
+
+<footer>
+    <p>Code examples are for educational purposes. Verify functionality before production use.</p>
+</footer>
+
+</body>
+</html>
+
+
+
