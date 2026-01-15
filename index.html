@@ -889,19 +889,12 @@ endmodule</pre>
 </footer>
 
 <script>
-    // Counter using CountAPI - increments on every page load
-    const namespace = 'praveenkumarvagala-vlsi';
-    const key = 'blog-views';
-    const startOffset = 1000;  // Starting count value
-    
-    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('visit-count').textContent = data.value + startOffset;
-        })
-        .catch(error => {
-            document.getElementById('visit-count').textContent = '---';
-        });
+    // Simple localStorage counter - works everywhere, increments every refresh
+    const startOffset = 1000;
+    const stored = parseInt(localStorage.getItem('vlsi-blog-views') || '0');
+    const newCount = stored + 1;
+    localStorage.setItem('vlsi-blog-views', newCount);
+    document.getElementById('visit-count').textContent = newCount + startOffset;
 </script>
 
 </body>
